@@ -1,0 +1,562 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/patrickmcguigan/Desktop/Financial Data/FirstDraft-DA401.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Apr 2021, 00:42:01
+
+{com}. sum ROR_1mo CEO CO Exec Own_10 Other bookValuePerShare debtToEquityRatio earningsPerBasicShare enterpriseValueOverEBITDA priceToEarningsRatio
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}ROR_1mo {c |}{res}      3,616    .0930792    .3881934  -.9822222   6.038462
+{txt}{space 9}CEO {c |}{res}      3,616    .2190265    .4136439          0          1
+{txt}{space 10}CO {c |}{res}      3,616     .159292    .3659988          0          1
+{txt}{space 8}Exec {c |}{res}      3,616    .5658186    .4957175          0          1
+{txt}{space 6}Own_10 {c |}{res}      3,616    .4175885    .4932298          0          1
+{txt}{hline 13}{c +}{hline 57}
+{space 7}Other {c |}{res}      3,616    .0464602    .2105086          0          1
+{txt}bookValueP~e {c |}{res}      3,089    3.472882    11.84957    -19.501    281.956
+{txt}debtToEqui~o {c |}{res}      3,089    3.142883    20.85088    -68.212    934.747
+{txt}earningsPe~e {c |}{res}      3,086   -19.14859    531.0939     -16819      20.05
+{txt}enterprise~A {c |}{res}      3,080    .9874081    58.08459  -1548.365    438.545
+{txt}{hline 13}{c +}{hline 57}
+priceToEar~o {c |}{res}      3,056   -2.434332    37.91419       -427        977
+
+{com}. reg  ROR_1mo CEO CO Exec Own_10 Other bookValuePerShare debtToEquityRatio earningsPerBasicShare enterpriseValueOver EBITDA priceToEarningsRatio
+{err}variable {bf}EBITDA{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. 
+. reg  ROR_1mo CEO CO Exec Own_10 Other bookValuePerShare debtToEquityRatio earningsPerBasicShare enterpriseValueOverEBITDA priceToEarningsRatio
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     3,056
+{txt}{hline 13}{c +}{hline 34}   F(10, 3045)     = {res}     0.80
+{txt}       Model {c |} {res} 1.08030838        10  .108030838   {txt}Prob > F        ={res}    0.6314
+{txt}    Residual {c |} {res} 412.527322     3,045  .135476953   {txt}R-squared       ={res}    0.0026
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0007
+{txt}       Total {c |} {res}  413.60763     3,055  .135387113   {txt}Root MSE        =   {res} .36807
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 22}CEO {c |}{col 27}{res}{space 2} .0075991{col 39}{space 2} .0172677{col 50}{space 1}    0.44{col 59}{space 3}0.660{col 67}{space 4}-.0262584{col 80}{space 3} .0414566
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0125774{col 39}{space 2} .0192113{col 50}{space 1}    0.65{col 59}{space 3}0.513{col 67}{space 4}-.0250911{col 80}{space 3} .0502459
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2}  .012533{col 39}{space 2} .0165386{col 50}{space 1}    0.76{col 59}{space 3}0.449{col 67}{space 4} -.019895{col 80}{space 3}  .044961
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0177995{col 39}{space 2} .0160151{col 50}{space 1}   -1.11{col 59}{space 3}0.266{col 67}{space 4} -.049201{col 80}{space 3}  .013602
+{txt}{space 20}Other {c |}{col 27}{res}{space 2} .0357199{col 39}{space 2}  .031622{col 50}{space 1}    1.13{col 59}{space 3}0.259{col 67}{space 4}-.0262827{col 80}{space 3} .0977226
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0009183{col 39}{space 2} .0005622{col 50}{space 1}   -1.63{col 59}{space 3}0.102{col 67}{space 4}-.0020206{col 80}{space 3} .0001839
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}-.0000771{col 39}{space 2} .0003187{col 50}{space 1}   -0.24{col 59}{space 3}0.809{col 67}{space 4}-.0007019{col 80}{space 3} .0005477
+{txt}{space 4}earningsPerBasicShare {c |}{col 27}{res}{space 2}-3.56e-07{col 39}{space 2} .0000125{col 50}{space 1}   -0.03{col 59}{space 3}0.977{col 67}{space 4}-.0000248{col 80}{space 3} .0000241
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000277{col 39}{space 2}  .000117{col 50}{space 1}   -0.24{col 59}{space 3}0.813{col 67}{space 4}-.0002571{col 80}{space 3} .0002017
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0000292{col 39}{space 2} .0001797{col 50}{space 1}    0.16{col 59}{space 3}0.871{col 67}{space 4}-.0003232{col 80}{space 3} .0003815
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0884897{col 39}{space 2} .0179031{col 50}{space 1}    4.94{col 59}{space 3}0.000{col 67}{space 4} .0533863{col 80}{space 3}  .123593
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg  ROR_1mo CEO CO Exec Own_10 bookValuePerShare debtToEquityRatio earningsPerBasicShare enterpriseValueOverEBITDA priceToEarningsRatio
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     3,056
+{txt}{hline 13}{c +}{hline 34}   F(9, 3046)      = {res}     0.74
+{txt}       Model {c |} {res} .907443086         9   .10082701   {txt}Prob > F        ={res}    0.6685
+{txt}    Residual {c |} {res} 412.700187     3,046  .135489228   {txt}R-squared       ={res}    0.0022
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0008
+{txt}       Total {c |} {res}  413.60763     3,055  .135387113   {txt}Root MSE        =   {res} .36809
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 22}CEO {c |}{col 27}{res}{space 2} .0047914{col 39}{space 2} .0170886{col 50}{space 1}    0.28{col 59}{space 3}0.779{col 67}{space 4} -.028715{col 80}{space 3} .0382978
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0139994{col 39}{space 2} .0191709{col 50}{space 1}    0.73{col 59}{space 3}0.465{col 67}{space 4}-.0235898{col 80}{space 3} .0515887
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} .0105192{col 39}{space 2}  .016443{col 50}{space 1}    0.64{col 59}{space 3}0.522{col 67}{space 4}-.0217213{col 80}{space 3} .0427597
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0205667{col 39}{space 2} .0158273{col 50}{space 1}   -1.30{col 59}{space 3}0.194{col 67}{space 4}   -.0516{col 80}{space 3} .0104667
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0009218{col 39}{space 2} .0005622{col 50}{space 1}   -1.64{col 59}{space 3}0.101{col 67}{space 4}-.0020241{col 80}{space 3} .0001805
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}-.0000755{col 39}{space 2} .0003187{col 50}{space 1}   -0.24{col 59}{space 3}0.813{col 67}{space 4}-.0007003{col 80}{space 3} .0005494
+{txt}{space 4}earningsPerBasicShare {c |}{col 27}{res}{space 2}-2.20e-07{col 39}{space 2} .0000125{col 50}{space 1}   -0.02{col 59}{space 3}0.986{col 67}{space 4}-.0000247{col 80}{space 3} .0000243
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000265{col 39}{space 2}  .000117{col 50}{space 1}   -0.23{col 59}{space 3}0.821{col 67}{space 4} -.000256{col 80}{space 3} .0002029
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0000293{col 39}{space 2} .0001797{col 50}{space 1}    0.16{col 59}{space 3}0.870{col 67}{space 4}-.0003231{col 80}{space 3} .0003817
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0928836{col 39}{space 2} .0174762{col 50}{space 1}    5.31{col 59}{space 3}0.000{col 67}{space 4} .0586174{col 80}{space 3} .1271499
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg  ROR_1mo CEO CO Exec Own_10 Other bookValuePerShare debtToEquityRatio enterpriseValueOverEBITDA priceToEarningsRatio
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     3,056
+{txt}{hline 13}{c +}{hline 34}   F(9, 3046)      = {res}     0.89
+{txt}       Model {c |} {res}  1.0801985         9  .120022055   {txt}Prob > F        ={res}    0.5367
+{txt}    Residual {c |} {res} 412.527432     3,046  .135432512   {txt}R-squared       ={res}    0.0026
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0003
+{txt}       Total {c |} {res}  413.60763     3,055  .135387113   {txt}Root MSE        =   {res} .36801
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 22}CEO {c |}{col 27}{res}{space 2} .0076017{col 39}{space 2} .0172646{col 50}{space 1}    0.44{col 59}{space 3}0.660{col 67}{space 4}-.0262498{col 80}{space 3} .0414531
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0125678{col 39}{space 2} .0192052{col 50}{space 1}    0.65{col 59}{space 3}0.513{col 67}{space 4}-.0250887{col 80}{space 3} .0502242
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} .0125284{col 39}{space 2} .0165351{col 50}{space 1}    0.76{col 59}{space 3}0.449{col 67}{space 4}-.0198927{col 80}{space 3} .0449495
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0178131{col 39}{space 2} .0160054{col 50}{space 1}   -1.11{col 59}{space 3}0.266{col 67}{space 4}-.0491955{col 80}{space 3} .0135693
+{txt}{space 20}Other {c |}{col 27}{res}{space 2} .0357112{col 39}{space 2} .0316153{col 50}{space 1}    1.13{col 59}{space 3}0.259{col 67}{space 4}-.0262783{col 80}{space 3} .0977008
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0009184{col 39}{space 2} .0005621{col 50}{space 1}   -1.63{col 59}{space 3}0.102{col 67}{space 4}-.0020204{col 80}{space 3} .0001837
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}-.0000771{col 39}{space 2} .0003186{col 50}{space 1}   -0.24{col 59}{space 3}0.809{col 67}{space 4}-.0007018{col 80}{space 3} .0005476
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000277{col 39}{space 2}  .000117{col 50}{space 1}   -0.24{col 59}{space 3}0.813{col 67}{space 4}-.0002571{col 80}{space 3} .0002017
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0000292{col 39}{space 2} .0001797{col 50}{space 1}    0.16{col 59}{space 3}0.871{col 67}{space 4}-.0003231{col 80}{space 3} .0003815
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0885062{col 39}{space 2} .0178907{col 50}{space 1}    4.95{col 59}{space 3}0.000{col 67}{space 4} .0534271{col 80}{space 3} .1235853
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg  ROR_1mo CEO CO Exec Own_10 bookValuePerShare debtToEquityRatio enterpriseValueOverEBITDA priceToEarningsRatio
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     3,056
+{txt}{hline 13}{c +}{hline 34}   F(8, 3047)      = {res}     0.84
+{txt}       Model {c |} {res} .907401205         8  .113425151   {txt}Prob > F        ={res}    0.5695
+{txt}    Residual {c |} {res} 412.700229     3,047  .135444775   {txt}R-squared       ={res}    0.0022
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0004
+{txt}       Total {c |} {res}  413.60763     3,055  .135387113   {txt}Root MSE        =   {res} .36803
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 22}CEO {c |}{col 27}{res}{space 2} .0047934{col 39}{space 2} .0170854{col 50}{space 1}    0.28{col 59}{space 3}0.779{col 67}{space 4}-.0287067{col 80}{space 3} .0382935
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0139933{col 39}{space 2} .0191645{col 50}{space 1}    0.73{col 59}{space 3}0.465{col 67}{space 4}-.0235835{col 80}{space 3}   .05157
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} .0105166{col 39}{space 2} .0164397{col 50}{space 1}    0.64{col 59}{space 3}0.522{col 67}{space 4}-.0217173{col 80}{space 3} .0427506
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0205746{col 39}{space 2} .0158183{col 50}{space 1}   -1.30{col 59}{space 3}0.193{col 67}{space 4}-.0515902{col 80}{space 3} .0104409
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0009218{col 39}{space 2} .0005621{col 50}{space 1}   -1.64{col 59}{space 3}0.101{col 67}{space 4}-.0020239{col 80}{space 3} .0001803
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}-.0000755{col 39}{space 2} .0003186{col 50}{space 1}   -0.24{col 59}{space 3}0.813{col 67}{space 4}-.0007002{col 80}{space 3} .0005492
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000265{col 39}{space 2}  .000117{col 50}{space 1}   -0.23{col 59}{space 3}0.821{col 67}{space 4}-.0002559{col 80}{space 3} .0002028
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0000293{col 39}{space 2} .0001797{col 50}{space 1}    0.16{col 59}{space 3}0.870{col 67}{space 4} -.000323{col 80}{space 3} .0003817
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0928932{col 39}{space 2} .0174648{col 50}{space 1}    5.32{col 59}{space 3}0.000{col 67}{space 4} .0586491{col 80}{space 3} .1271373
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. mvtest normality ROR_1mo bookValuePerShare debtToEquityRatio priceToEarningsRatio enterpriseValueOverEBITDA
+{res}
+{txt}Test for multivariate normality
+
+    {lalign 16:Doornik-Hansen}            {ralign 12:chi2({res:10})} ={res} 1.30e+06{txt}   Prob>chi2 = {res} 0.0000
+
+{com}. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare Other Own_10 Exec CO CEO
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,056
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     19.10
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0244
+{txt}Log likelihood = {res}-2082.1924{txt}{col 49}Pseudo R2{col 67}= {res}    0.0046
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                      Buy{col 27}{c |} Odds Ratio{col 39}   Std. Err.{col 51}      z{col 59}   P>|z|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} 1.001686{col 39}{space 2} .0011056{col 50}{space 1}    1.53{col 59}{space 3}0.127{col 67}{space 4} .9995214{col 80}{space 3} 1.003855
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2} .9994043{col 39}{space 2} .0006724{col 50}{space 1}   -0.89{col 59}{space 3}0.376{col 67}{space 4} .9980872{col 80}{space 3} 1.000723
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} 1.006193{col 39}{space 2} .0033785{col 50}{space 1}    1.84{col 59}{space 3}0.066{col 67}{space 4} .9995933{col 80}{space 3} 1.012837
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2} 1.001579{col 39}{space 2} .0032098{col 50}{space 1}    0.49{col 59}{space 3}0.622{col 67}{space 4}  .995308{col 80}{space 3}  1.00789
+{txt}{space 20}Other {c |}{col 27}{res}{space 2} 1.221505{col 39}{space 2} .2150861{col 50}{space 1}    1.14{col 59}{space 3}0.256{col 67}{space 4}  .864994{col 80}{space 3} 1.724953
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2} 1.188273{col 39}{space 2} .1052239{col 50}{space 1}    1.95{col 59}{space 3}0.051{col 67}{space 4} .9989433{col 80}{space 3} 1.413487
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} 1.113882{col 39}{space 2} .1017901{col 50}{space 1}    1.18{col 59}{space 3}0.238{col 67}{space 4} .9312229{col 80}{space 3}  1.33237
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} 1.309113{col 39}{space 2} .1402553{col 50}{space 1}    2.51{col 59}{space 3}0.012{col 67}{space 4} 1.061161{col 80}{space 3} 1.615001
+{txt}{space 22}CEO {c |}{col 27}{res}{space 2} 1.114147{col 39}{space 2} .1062087{col 50}{space 1}    1.13{col 59}{space 3}0.257{col 67}{space 4} .9242716{col 80}{space 3} 1.343029
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} 1.042656{col 39}{space 2} .1031099{col 50}{space 1}    0.42{col 59}{space 3}0.673{col 67}{space 4} .8589434{col 80}{space 3} 1.265662
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. logistic Buy Other Own_10 Exec CO CEO
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,616
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}      5.42
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.3665
+{txt}Log likelihood = {res}-2473.8568{txt}{col 49}Pseudo R2{col 67}= {res}    0.0011
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         Buy{col 14}{c |} Odds Ratio{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}Other {c |}{col 14}{res}{space 2} 1.195734{col 26}{space 2}  .197383{col 37}{space 1}    1.08{col 46}{space 3}0.279{col 54}{space 4} .8652158{col 67}{space 3} 1.652512
+{txt}{space 6}Own_10 {c |}{col 14}{res}{space 2} 1.108604{col 26}{space 2} .0883524{col 37}{space 1}    1.29{col 46}{space 3}0.196{col 54}{space 4} .9482837{col 67}{space 3} 1.296029
+{txt}{space 8}Exec {c |}{col 14}{res}{space 2} 1.091941{col 26}{space 2} .0900263{col 37}{space 1}    1.07{col 46}{space 3}0.286{col 54}{space 4} .9290108{col 67}{space 3} 1.283445
+{txt}{space 10}CO {c |}{col 14}{res}{space 2} 1.189749{col 26}{space 2}   .11585{col 37}{space 1}    1.78{col 46}{space 3}0.074{col 54}{space 4} .9830391{col 67}{space 3} 1.439925
+{txt}{space 9}CEO {c |}{col 14}{res}{space 2}  1.02838{col 26}{space 2}  .088307{col 37}{space 1}    0.33{col 46}{space 3}0.745{col 54}{space 4} .8690824{col 67}{space 3} 1.216876
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.131543{col 26}{space 2} .1001395{col 37}{space 1}    1.40{col 46}{space 3}0.163{col 54}{space 4} .9513521{col 67}{space 3} 1.345863
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare 
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,056
+{txt}{col 49}LR chi2({res}4{txt}){col 67}= {res}      7.68
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.1039
+{txt}Log likelihood = {res}-2087.8991{txt}{col 49}Pseudo R2{col 67}= {res}    0.0018
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                      Buy{col 27}{c |} Odds Ratio{col 39}   Std. Err.{col 51}      z{col 59}   P>|z|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} 1.001594{col 39}{space 2} .0011029{col 50}{space 1}    1.45{col 59}{space 3}0.148{col 67}{space 4}  .999435{col 80}{space 3} 1.003758
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2} .9994331{col 39}{space 2} .0006739{col 50}{space 1}   -0.84{col 59}{space 3}0.400{col 67}{space 4} .9981132{col 80}{space 3} 1.000755
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} 1.006039{col 39}{space 2} .0033242{col 50}{space 1}    1.82{col 59}{space 3}0.068{col 67}{space 4} .9995444{col 80}{space 3} 1.012575
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2} 1.001733{col 39}{space 2} .0032084{col 50}{space 1}    0.54{col 59}{space 3}0.589{col 67}{space 4} .9954641{col 80}{space 3} 1.008041
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} 1.279197{col 39}{space 2} .0502672{col 50}{space 1}    6.27{col 59}{space 3}0.000{col 67}{space 4} 1.184373{col 80}{space 3} 1.381612
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. reg  ROR_1mo bookValuePerShare debtToEquityRatio earningsPerBasicShare enterpriseValueOverEBITDA priceToEarningsRatio
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     3,056
+{txt}{hline 13}{c +}{hline 34}   F(5, 3050)      = {res}     0.45
+{txt}       Model {c |} {res} .308225966         5  .061645193   {txt}Prob > F        ={res}    0.8100
+{txt}    Residual {c |} {res} 413.299404     3,050  .135508001   {txt}R-squared       ={res}    0.0007
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0009
+{txt}       Total {c |} {res}  413.60763     3,055  .135387113   {txt}Root MSE        =   {res} .36811
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0008289{col 39}{space 2} .0005595{col 50}{space 1}   -1.48{col 59}{space 3}0.139{col 67}{space 4} -.001926{col 80}{space 3} .0002681
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}-.0000636{col 39}{space 2} .0003181{col 50}{space 1}   -0.20{col 59}{space 3}0.841{col 67}{space 4}-.0006874{col 80}{space 3} .0005601
+{txt}{space 4}earningsPerBasicShare {c |}{col 27}{res}{space 2}-6.99e-07{col 39}{space 2} .0000125{col 50}{space 1}   -0.06{col 59}{space 3}0.955{col 67}{space 4}-.0000252{col 80}{space 3} .0000238
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000245{col 39}{space 2} .0001169{col 50}{space 1}   -0.21{col 59}{space 3}0.834{col 67}{space 4}-.0002537{col 80}{space 3} .0002046
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0000101{col 39}{space 2} .0001794{col 50}{space 1}    0.06{col 59}{space 3}0.955{col 67}{space 4}-.0003415{col 80}{space 3} .0003618
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0937567{col 39}{space 2} .0070371{col 50}{space 1}   13.32{col 59}{space 3}0.000{col 67}{space 4} .0799587{col 80}{space 3} .1075546
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg  ROR_1mo CEO CO Exec Own_10 Other bookValuePerShare debtToEquityRatio earningsPerBasicShare enterpriseValueOverEBITDA priceToEarningsRatio if Helper_Count == 1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,591
+{txt}{hline 13}{c +}{hline 34}   F(10, 2580)     = {res}     0.68
+{txt}       Model {c |} {res} .860624506        10  .086062451   {txt}Prob > F        ={res}    0.7441
+{txt}    Residual {c |} {res}  326.57372     2,580  .126578961   {txt}R-squared       ={res}    0.0026
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0012
+{txt}       Total {c |} {res} 327.434344     2,590  .126422527   {txt}Root MSE        =   {res} .35578
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 22}CEO {c |}{col 27}{res}{space 2} .0027418{col 39}{space 2} .0179836{col 50}{space 1}    0.15{col 59}{space 3}0.879{col 67}{space 4} -.032522{col 80}{space 3} .0380056
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0131658{col 39}{space 2} .0199822{col 50}{space 1}    0.66{col 59}{space 3}0.510{col 67}{space 4} -.026017{col 80}{space 3} .0523486
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} .0136438{col 39}{space 2} .0173885{col 50}{space 1}    0.78{col 59}{space 3}0.433{col 67}{space 4}-.0204531{col 80}{space 3} .0477407
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0091031{col 39}{space 2} .0166062{col 50}{space 1}   -0.55{col 59}{space 3}0.584{col 67}{space 4}-.0416659{col 80}{space 3} .0234597
+{txt}{space 20}Other {c |}{col 27}{res}{space 2} .0261341{col 39}{space 2} .0341021{col 50}{space 1}    0.77{col 59}{space 3}0.444{col 67}{space 4}-.0407361{col 80}{space 3} .0930044
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2} -.000929{col 39}{space 2} .0005498{col 50}{space 1}   -1.69{col 59}{space 3}0.091{col 67}{space 4} -.002007{col 80}{space 3} .0001491
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}-.0001153{col 39}{space 2} .0003179{col 50}{space 1}   -0.36{col 59}{space 3}0.717{col 67}{space 4}-.0007388{col 80}{space 3} .0005081
+{txt}{space 4}earningsPerBasicShare {c |}{col 27}{res}{space 2} 1.78e-06{col 39}{space 2} .0000147{col 50}{space 1}    0.12{col 59}{space 3}0.904{col 67}{space 4} -.000027{col 80}{space 3} .0000306
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000861{col 39}{space 2} .0001165{col 50}{space 1}   -0.74{col 59}{space 3}0.460{col 67}{space 4}-.0003145{col 80}{space 3} .0001423
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0002048{col 39}{space 2} .0001774{col 50}{space 1}    1.15{col 59}{space 3}0.248{col 67}{space 4}-.0001431{col 80}{space 3} .0005526
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0844964{col 39}{space 2} .0188255{col 50}{space 1}    4.49{col 59}{space 3}0.000{col 67}{space 4} .0475818{col 80}{space 3} .1214109
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare if Helper_count ==1
+{err}Helper_count not found
+{txt}{search r(111), local:r(111);}
+
+{com}. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare if Helper_Count ==1
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     2,591
+{txt}{col 49}LR chi2({res}4{txt}){col 67}= {res}      9.23
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0557
+{txt}Log likelihood = {res}-1764.3888{txt}{col 49}Pseudo R2{col 67}= {res}    0.0026
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                      Buy{col 27}{c |} Odds Ratio{col 39}   Std. Err.{col 51}      z{col 59}   P>|z|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} 1.002537{col 39}{space 2} .0012562{col 50}{space 1}    2.02{col 59}{space 3}0.043{col 67}{space 4} 1.000078{col 80}{space 3} 1.005002
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}   .99902{col 39}{space 2} .0007507{col 50}{space 1}   -1.30{col 59}{space 3}0.192{col 67}{space 4} .9975498{col 80}{space 3} 1.000492
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} 1.004872{col 39}{space 2} .0034656{col 50}{space 1}    1.41{col 59}{space 3}0.159{col 67}{space 4}  .998102{col 80}{space 3} 1.011687
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2} 1.001652{col 39}{space 2} .0032574{col 50}{space 1}    0.51{col 59}{space 3}0.612{col 67}{space 4} .9952883{col 80}{space 3} 1.008057
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} 1.321907{col 39}{space 2} .0561475{col 50}{space 1}    6.57{col 59}{space 3}0.000{col 67}{space 4} 1.216316{col 80}{space 3} 1.436665
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare Other Own_10 Exec CO CEO if Helper_Count == 1
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     2,591
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     18.73
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0276
+{txt}Log likelihood = {res}-1759.6378{txt}{col 49}Pseudo R2{col 67}= {res}    0.0053
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                      Buy{col 27}{c |} Odds Ratio{col 39}   Std. Err.{col 51}      z{col 59}   P>|z|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} 1.002638{col 39}{space 2} .0012591{col 50}{space 1}    2.10{col 59}{space 3}0.036{col 67}{space 4} 1.000173{col 80}{space 3} 1.005109
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}  .999018{col 39}{space 2} .0007422{col 50}{space 1}   -1.32{col 59}{space 3}0.186{col 67}{space 4} .9975644{col 80}{space 3} 1.000474
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} 1.004956{col 39}{space 2} .0035125{col 50}{space 1}    1.41{col 59}{space 3}0.157{col 67}{space 4} .9980947{col 80}{space 3} 1.011863
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2} 1.001507{col 39}{space 2} .0032612{col 50}{space 1}    0.46{col 59}{space 3}0.644{col 67}{space 4} .9951351{col 80}{space 3} 1.007919
+{txt}{space 20}Other {c |}{col 27}{res}{space 2} 1.181106{col 39}{space 2}   .23222{col 50}{space 1}    0.85{col 59}{space 3}0.397{col 67}{space 4} .8034008{col 80}{space 3} 1.736384
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2} 1.194936{col 39}{space 2} .1137887{col 50}{space 1}    1.87{col 59}{space 3}0.061{col 67}{space 4} .9914896{col 80}{space 3} 1.440127
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} 1.127617{col 39}{space 2} .1123014{col 50}{space 1}    1.21{col 59}{space 3}0.228{col 67}{space 4} .9276601{col 80}{space 3} 1.370674
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} 1.318032{col 39}{space 2} .1523219{col 50}{space 1}    2.39{col 59}{space 3}0.017{col 67}{space 4} 1.050883{col 80}{space 3} 1.653093
+{txt}{space 22}CEO {c |}{col 27}{res}{space 2} 1.065332{col 39}{space 2}  .109489{col 50}{space 1}    0.62{col 59}{space 3}0.538{col 67}{space 4} .8709701{col 80}{space 3} 1.303068
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} 1.075292{col 39}{space 2} .1159545{col 50}{space 1}    0.67{col 59}{space 3}0.501{col 67}{space 4}  .870436{col 80}{space 3} 1.328361
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. graph bar CEO CO Exec Own_10 Other, by(ROR_1mo)
+{res}{err}too many sersets
+{txt}{search r(1001), local:r(1001);}
+
+{com}. graph bar mean(ROR_1m), by(CEO CO Exec Own_10 Other)
+{err}mean:  operator invalid
+{txt}{search r(198), local:r(198);}
+
+{com}. egen CEO_ROR = mean(ROR_1mo) if CEO == 1
+{txt}(2,824 missing values generated)
+
+{com}. tab CEO_ROR
+
+    {txt}CEO_ROR {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+   .0935356 {c |}{res}        792      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        792      100.00
+
+{com}. egen CO_ROR = mean(ROR_1mo) if CO == 1
+{txt}(3,040 missing values generated)
+
+{com}. egen Exec_ROR = mean(ROR_1mo) if Exec == 1
+{txt}(1,570 missing values generated)
+
+{com}. egen 10_ROR = mean(ROR_1mo) if Own_10 == 1
+{err}10_ROR invalid name
+{txt}{search r(198), local:r(198);}
+
+{com}. egen ten_ROR = mean(ROR_1mo) if Own_10 == 1
+{txt}(2,106 missing values generated)
+
+{com}. egen Other_ROR = mean(ROR_1mo) if Other == 1
+{txt}(3,448 missing values generated)
+
+{com}. bar graph CEO_ROR CO_ROR Exec_ROR ten_ROR Other_ROR
+{err}command {bf}bar{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. graph bar CEO_ROR CO_ROR Exec_ROR ten_ROR Other_ROR
+{res}
+{com}. histogram ROR_1mo
+{txt}(bin={res}35{txt}, start={res}-.98222222{txt}, width={res}.20059098{txt})
+{res}
+{com}. dotplot ROR_1mo
+{res}
+{com}. {res}{com}histogram ROR_1mo
+{txt}(bin={res}35{txt}, start={res}-.98222222{txt}, width={res}.20059098{txt})
+{res}
+{com}. {res}{com}dotplot ROR_1mo
+{res}
+{com}. {res}{com}dotplot ROR_1mo
+{res}
+{com}. dotplot ROR_1mo priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare
+{res}
+{com}. dotplot ROR_1mo
+{res}
+{com}. 
+. {res}{com}dotplot priceToEarningsRatio
+{res}
+{com}. {res}{com}dotplot enterpriseValueOverEBITDA
+{res}
+{com}. {res}{com}dotplot debtToEquityRatio
+{res}
+{com}. {res}{com}dotplot bookValuePerShare
+{res}
+{com}. {res}{com}qreg ROR_1mo priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare Other Own_10 CO Exec CEO, quantile(50)
+{txt}Iteration  1:  WLS sum of weighted deviations = {res} 336.86354
+
+{txt}Iteration  1: sum of abs. weighted deviations = {res} 337.10629
+{txt}Iteration  2: sum of abs. weighted deviations = {res} 336.89211
+{txt}Iteration  3: sum of abs. weighted deviations = {res} 335.29563
+{txt}Iteration  4: sum of abs. weighted deviations = {res} 334.27681
+{txt}Iteration  5: sum of abs. weighted deviations = {res} 332.38583
+{txt}Iteration  6: sum of abs. weighted deviations = {res} 332.05085
+{txt}Iteration  7: sum of abs. weighted deviations = {res} 331.98799
+{txt}Iteration  8: sum of abs. weighted deviations = {res} 331.89378
+{txt}Iteration  9: sum of abs. weighted deviations = {res} 331.39862
+{txt}Iteration 10: sum of abs. weighted deviations = {res} 330.95513
+{txt}Iteration 11: sum of abs. weighted deviations = {res} 330.69436
+{txt}Iteration 12: sum of abs. weighted deviations = {res} 330.61124
+{txt}Iteration 13: sum of abs. weighted deviations = {res} 330.50222
+{txt}Iteration 14: sum of abs. weighted deviations = {res} 330.39245
+{txt}Iteration 15: sum of abs. weighted deviations = {res} 330.35747
+{txt}Iteration 16: sum of abs. weighted deviations = {res} 330.29209
+{txt}Iteration 17: sum of abs. weighted deviations = {res} 330.27992
+{txt}Iteration 18: sum of abs. weighted deviations = {res} 330.26586
+{txt}Iteration 19: sum of abs. weighted deviations = {res} 330.26222
+{txt}Iteration 20: sum of abs. weighted deviations = {res} 330.25779
+{txt}Iteration 21: sum of abs. weighted deviations = {res} 330.25577
+{txt}Iteration 22: sum of abs. weighted deviations = {res} 330.25024
+{txt}Iteration 23: sum of abs. weighted deviations = {res} 329.94069
+{txt}Iteration 24: sum of abs. weighted deviations = {res} 329.93867
+{txt}Iteration 25: sum of abs. weighted deviations = {res} 329.93847
+{txt}Iteration 26: sum of abs. weighted deviations = {res} 329.93734
+{txt}Iteration 27: sum of abs. weighted deviations = {res} 329.93701
+{txt}Iteration 28: sum of abs. weighted deviations = {res} 329.93694
+{txt}Iteration 29: sum of abs. weighted deviations = {res} 329.93393
+{txt}Iteration 30: sum of abs. weighted deviations = {res}  329.9337
+{txt}Iteration 31: sum of abs. weighted deviations = {res} 329.93367
+{txt}Iteration 32: sum of abs. weighted deviations = {res} 329.89673
+{txt}Iteration 33: sum of abs. weighted deviations = {res} 329.89533
+{txt}Iteration 34: sum of abs. weighted deviations = {res} 329.89495
+{txt}Iteration 35: sum of abs. weighted deviations = {res} 329.89475
+{txt}Iteration 36: sum of abs. weighted deviations = {res} 329.89475
+
+{txt}Median regression{col 53}Number of obs = {res}     3,056
+{txt}  Raw sum of deviations{res} 330.5423{txt} (about {res}.03765687{txt})
+  Min sum of deviations{res} 329.8947{col 53}{txt}Pseudo R2     = {res}    0.0020
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0001963{col 39}{space 2}  .000116{col 50}{space 1}    1.69{col 59}{space 3}0.091{col 67}{space 4}-.0000311{col 80}{space 3} .0004238
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-.0000142{col 39}{space 2} .0000755{col 50}{space 1}   -0.19{col 59}{space 3}0.851{col 67}{space 4}-.0001622{col 80}{space 3} .0001339
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} .0001822{col 39}{space 2} .0002057{col 50}{space 1}    0.89{col 59}{space 3}0.376{col 67}{space 4}-.0002211{col 80}{space 3} .0005855
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0000644{col 39}{space 2} .0003629{col 50}{space 1}   -0.18{col 59}{space 3}0.859{col 67}{space 4}-.0007759{col 80}{space 3} .0006471
+{txt}{space 20}Other {c |}{col 27}{res}{space 2} .0511762{col 39}{space 2} .0204107{col 50}{space 1}    2.51{col 59}{space 3}0.012{col 67}{space 4}  .011156{col 80}{space 3} .0911964
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0016376{col 39}{space 2}  .010333{col 50}{space 1}   -0.16{col 59}{space 3}0.874{col 67}{space 4}-.0218979{col 80}{space 3} .0186227
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0231624{col 39}{space 2} .0123988{col 50}{space 1}    1.87{col 59}{space 3}0.062{col 67}{space 4}-.0011484{col 80}{space 3} .0474732
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} .0065837{col 39}{space 2}  .010675{col 50}{space 1}    0.62{col 59}{space 3}0.537{col 67}{space 4}-.0143473{col 80}{space 3} .0275146
+{txt}{space 22}CEO {c |}{col 27}{res}{space 2} .0023824{col 39}{space 2} .0111459{col 50}{space 1}    0.21{col 59}{space 3}0.831{col 67}{space 4}-.0194719{col 80}{space 3} .0242368
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0289329{col 39}{space 2} .0115502{col 50}{space 1}    2.50{col 59}{space 3}0.012{col 67}{space 4}  .006286{col 80}{space 3} .0515798
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. ac priceToEarningsRatio
+{err}time variable not set, use {bf:tsset varname ...}
+{txt}{search r(111), local:r(111);}
+
+{com}. program corrtable
+{txt}  1{com}. version 8 
+{txt}  2{com}. forval k = 1/7 {c -(} 
+{txt}  3{com}. local opts `opts' flag`k'(str) howflag`k'(str) 
+{txt}  4{com}. {c )-}
+{txt}  5{com}. 
+. syntax varlist(numeric) [if] [in] [,                        ///
+{txt}  6{com}. COMBine(str asis) DIAGonal(str asis) n Pval LISTwise HAlf   ///
+{txt}  7{com}. rformat(str) pformat(str) rsize(str) `opts' * ] 
+{txt}  8{com}. 
+. if "`rsize'" != "" & !index("`rsize'", "r(rho)") {c -(} 
+{txt}  9{com}. di as err "rsize() must refer to r(rho)" 
+{txt} 10{com}. exit 198 
+{txt} 11{com}. {c )-} 
+{txt} 12{com}. 
+. if "`listwise'" != "" marksample touse, novarlist 
+{txt} 13{com}. else                  marksample touse 
+{txt} 14{com}. qui count if `touse' 
+{txt} 15{com}. if r(N) == 0 error 2000 
+{txt} 16{com}. 
+. tokenize "`varlist'" 
+{txt} 17{com}. local nv : word count `varlist' 
+{txt} 18{com}. local h1 = 2 
+{txt} 19{com}. local h2 = `nv' 
+{txt} 20{com}. 
+. qui forval i = 1/`nv' {c -(} 
+{txt} 21{com}. local I : variable label ``i'' 
+{txt} 22{com}. if `"`I'"' == "" local I "``i''"
+{txt} 23{com}. local I = trim(`"`I'"') 
+{txt} 24{com}. 
+. if `i' < `nv' local holes `holes' `h1'/`h2' 
+{txt} 25{com}. 
+. local J = cond("`half'" != "", `i', `nv') 
+{txt} 26{com}. 
+. forval j = 1/`J' {c -(} 
+{txt} 27{com}. tempname g 
+{txt} 28{com}. 
+. if `i' == `j' {c -(} 
+{txt} 29{com}. forval l = 1/5 {c -(} 
+{txt} 30{com}. local p`l' : piece `l' 16 of "`I'", nobreak 
+{txt} 31{com}. {c )-}
+{txt} 32{com}. 
+. local y = 5 
+{txt} 33{com}. local call `y' 1 `"`p1'"'
+{txt} 34{com}. 
+. forval l = 2/5 {c -(} 
+{txt} 35{com}. if `"`p`l''"' != "" {c -(} 
+{txt} 36{com}. local --y 
+{txt} 37{com}. local call `call' `y' 1 `"`p`l''"' 
+{txt} 38{com}. {c )-} 
+{txt} 39{com}. {c )-}
+{txt} 40{com}. 
+.         if `y' < 5 {c -(} 
+{txt} 41{com}. local --y
+{txt} 42{com}. local scale r(`y' 6) 
+{txt} 43{com}. {c )-} 
+{txt} 44{com}. else local scale 
+{txt} 45{com}. 
+. twoway scatteri `call', mlabsize(*3) mlabpos(0) ms(none ..) name(`g') ///
+{txt} 46{com}. nodraw ysc(`scale' off) yla(, nogrid) xsc(off) `diagonal' 
+{txt} 47{com}. {c )-}
+{txt} 48{com}. else {c -(} 
+{txt} 49{com}. corr ``i'' ``j'' if `touse' 
+{txt} 50{com}. 
+. if "`rsize'" != "" {c -(} 
+{txt} 51{com}. local rlabsize = `rsize' 
+{txt} 52{com}. local rsizecall mlabsize(*`rlabsize') 
+{txt} 53{com}. {c )-} 
+{txt} 54{com}. 
+. if "`rformat'" == "" local rformat %5.3f
+{txt} 55{com}. local rho : di `rformat' r(rho) 
+{txt} 56{com}. local y = 3 
+{txt} 57{com}. local call `y' 1 "`rho'" 
+{txt} 58{com}. 
+. if "`n'" != "" {c -(} 
+{txt} 59{com}. local --y 
+{txt} 60{com}. local call `call' `y' 1 "`r(N)'" 
+{txt} 61{com}. {c )-}
+{txt} 62{com}. 
+. if "`pval'" != "" {c -(} 
+{txt} 63{com}. if "`pformat'" == "" local pformat %4.3f 
+{txt} 64{com}. local P = 2 * ttail(r(N)-2, abs(r(rho)) * sqrt(r(N)-2) / sqrt(1 - r(rho)^2)) 
+{txt} 65{com}. local P : di `pformat' `P' 
+{txt} 66{com}. local --y
+{txt} 67{com}. local call `call' `y' 1 "`P'"
+{txt} 68{com}. {c )-}
+{txt} 69{com}. 
+. local --y 
+{txt} 70{com}. 
+. local show 
+{txt} 71{com}. forval k = 1/7 {c -(}
+{txt} 72{com}. if "`flag`k''" != "" {c -(}  
+{txt} 73{com}. if `flag`k'' local show `howflag`k''
+{txt} 74{com}. {c )-}
+{txt} 75{com}. {c )-} 
+{txt} 76{com}. 
+. twoway scatteri `call', mlabsize(*4) mlabpos(0) ///
+{txt} 77{com}. ysc(r(`y' 4) off) xsc(r(0 2) off) yla(, nogrid) name(`g')     /// 
+{txt} 78{com}. ms(none ..) nodraw `options' `show' `rsizecall' 
+{txt} 79{com}. {c )-}
+{txt} 80{com}. 
+. local G `G' `g' 
+{txt} 81{com}. {c )-}
+{txt} 82{com}. 
+. local h1 = `h1' + `nv' + 1 
+{txt} 83{com}. local h2 = `h2' + `nv' 
+{txt} 84{com}. {c )-}
+{txt} 85{com}. 
+. if "`half'" != "" graph combine `G', holes(`holes') `combine'
+{txt} 86{com}. else graph combine `G', `combine' 
+{txt} 87{com}. end
+
+. 
+. scc install corrtable
+{err}command {bf}scc{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ssc install corrtable
+{txt}checking {hilite:corrtable} consistency and verifying not already installed...
+installing into /Users/patrickmcguigan/Library/Application Support/Stata/ado/plus/...
+installation complete.
+
+{com}. corrtable priceToEarningsRatio enterpriseValueOverEBITDA earningsPerBasicShare debtToEquityRatio bookValuePerShare Other Own_10 Exec CO CEO
+{err}invalid syntax
+{txt}{search r(197), local:r(197);}
+
+{com}. correlate priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare CEO CO Exec Own_10 Other
+{txt}(obs=3,056)
+
+             {c |} priceT~o enterp~A debtTo~o bookVa~e      CEO       CO     Exec   Own_10    Other
+{hline 13}{c +}{hline 81}
+priceToEar~o {c |}{res}   1.0000
+{txt}enterprise~A {c |}{res}   0.1997   1.0000
+{txt}debtToEqui~o {c |}{res}   0.0222   0.0456   1.0000
+{txt}bookValueP~e {c |}{res}   0.0254  -0.0115  -0.0035   1.0000
+         {txt}CEO {c |}{res}  -0.0364  -0.0003  -0.0378  -0.0220   1.0000
+          {txt}CO {c |}{res}  -0.0371   0.0243  -0.0197   0.0638   0.1630   1.0000
+        {txt}Exec {c |}{res}  -0.0107  -0.0341   0.0518   0.0275  -0.2422  -0.2191   1.0000
+      {txt}Own_10 {c |}{res}   0.0351  -0.0024  -0.0138  -0.0658  -0.0256  -0.0394  -0.4663   1.0000
+       {txt}Other {c |}{res}   0.0005   0.0157   0.0049   0.0101  -0.1028   0.0779  -0.0258  -0.1139   1.0000
+
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/patrickmcguigan/Desktop/Financial Data/FirstDraft-DA401.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}21 Apr 2021, 07:10:11
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
