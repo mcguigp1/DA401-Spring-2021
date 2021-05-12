@@ -1,0 +1,445 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/patrickmcguigan/Desktop/Financial Data/Distribution.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}12 May 2021, 00:05:19
+
+{com}. dotplot ROR_1mo
+{res}
+{com}. {res}{com}graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/RORdist.gph", replace
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/RORdist.gph saved)
+
+{com}. dotplot bookValuePerShare
+{res}
+{com}. {res}{com}graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/BVPSdist.gph"
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/BVPSdist.gph saved)
+
+{com}. dotplot debtToEquityRatio
+{res}
+{com}. {res}{com}graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/DEdist.gph"
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/DEdist.gph saved)
+
+{com}. dotplot enterpriseValueOverEBITDA
+{res}
+{com}. {res}{com}graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/EVdist.gph"
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/EVdist.gph saved)
+
+{com}. dotplot priceToEarningsRatio
+{res}
+{com}. {res}{com}graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/PEdist.gph"
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/PEdist.gph saved)
+
+{com}. graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/PEdist.gph", replace
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/PEdist.gph saved)
+
+{com}. graph use "/Users/patrickmcguigan/Desktop/Financial Data/PEdist.gph"
+{res}
+{com}. graph use "/Users/patrickmcguigan/Desktop/Financial Data/EVdist.gph"
+{res}
+{com}. graph use "/Users/patrickmcguigan/Desktop/Financial Data/DEdist.gph"
+{res}
+{com}. graph use "/Users/patrickmcguigan/Desktop/Financial Data/BVPSdist.gph"
+{res}
+{com}. graph use "/Users/patrickmcguigan/Desktop/Financial Data/RORdist.gph"
+{res}
+{com}. egen CO_ROR = mean(ROR_1mo) if CO == 1
+{txt}(3,040 missing values generated)
+
+{com}. egen CEO_ROR = mean(ROR_1mo) if CEO == 1
+{txt}(2,824 missing values generated)
+
+{com}. egen ten_ROR = mean(ROR_1mo) if Own_10 == 1
+{txt}(2,106 missing values generated)
+
+{com}. egen Exec_ROR = mean(ROR_1mo) if Exec == 1
+{txt}(1,570 missing values generated)
+
+{com}. graph bar CEO_ROR CO_ROR Exec_ROR ten_ROR
+{res}
+{com}. egen Other_10 = mean(ROR_1mo) if Other == 1
+{txt}(3,448 missing values generated)
+
+{com}. 
+. graph bar CEO_ROR CO_ROR Exec_ROR ten_ROR Other_10
+{res}
+{com}. {res}{com}graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/MeanTitle.gph"
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/MeanTitle.gph saved)
+
+{com}. graph save "Graph" "/Users/patrickmcguigan/Desktop/Financial Data/MeanTitle.gph", replace
+{res}{txt}(file /Users/patrickmcguigan/Desktop/Financial Data/MeanTitle.gph saved)
+
+{com}.  qreg ROR_1mo Covid priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare Other Own_10 CO Exec CEO, quantile(50> )
+{err}{p}options{err} {bf:quantile(50>, )} are{err} not allowed{p_end}
+{txt}{search r(198), local:r(198);}
+
+{com}. 
+. qreg ROR_1mo Covid priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare Own_10 Exec CO CEO, quantile(50)
+{txt}Iteration  1:  WLS sum of weighted deviations = {res} 337.11608
+
+{txt}Iteration  1: sum of abs. weighted deviations = {res} 336.65959
+{txt}Iteration  2: sum of abs. weighted deviations = {res}  336.3739
+{txt}Iteration  3: sum of abs. weighted deviations = {res} 335.24983
+{txt}Iteration  4: sum of abs. weighted deviations = {res} 334.39349
+{txt}Iteration  5: sum of abs. weighted deviations = {res} 332.19785
+{txt}Iteration  6: sum of abs. weighted deviations = {res} 332.04339
+{txt}Iteration  7: sum of abs. weighted deviations = {res} 330.69678
+{txt}Iteration  8: sum of abs. weighted deviations = {res} 330.32511
+{txt}Iteration  9: sum of abs. weighted deviations = {res} 330.20581
+{txt}Iteration 10: sum of abs. weighted deviations = {res} 329.57336
+{txt}Iteration 11: sum of abs. weighted deviations = {res} 329.13866
+{txt}Iteration 12: sum of abs. weighted deviations = {res} 328.56206
+{txt}Iteration 13: sum of abs. weighted deviations = {res} 328.45901
+{txt}Iteration 14: sum of abs. weighted deviations = {res} 328.30938
+{txt}Iteration 15: sum of abs. weighted deviations = {res} 328.28036
+{txt}Iteration 16: sum of abs. weighted deviations = {res} 328.26014
+{txt}Iteration 17: sum of abs. weighted deviations = {res} 328.25403
+{txt}Iteration 18: sum of abs. weighted deviations = {res} 328.23525
+{txt}Iteration 19: sum of abs. weighted deviations = {res}  328.2305
+{txt}Iteration 20: sum of abs. weighted deviations = {res} 328.22705
+{txt}Iteration 21: sum of abs. weighted deviations = {res} 328.22695
+{txt}Iteration 22: sum of abs. weighted deviations = {res} 328.22481
+{txt}Iteration 23: sum of abs. weighted deviations = {res} 328.21309
+{txt}Iteration 24: sum of abs. weighted deviations = {res} 328.21277
+{txt}Iteration 25: sum of abs. weighted deviations = {res} 328.20868
+{txt}Iteration 26: sum of abs. weighted deviations = {res} 328.20741
+{txt}Iteration 27: sum of abs. weighted deviations = {res} 328.20683
+{txt}Iteration 28: sum of abs. weighted deviations = {res} 328.20673
+{txt}Iteration 29: sum of abs. weighted deviations = {res} 328.20659
+{txt}Iteration 30: sum of abs. weighted deviations = {res} 328.10163
+{txt}Iteration 31: sum of abs. weighted deviations = {res} 328.09452
+{txt}Iteration 32: sum of abs. weighted deviations = {res} 328.09184
+{txt}Iteration 33: sum of abs. weighted deviations = {res} 328.09184
+{txt}Iteration 34: sum of abs. weighted deviations = {res} 328.09145
+{txt}Iteration 35: sum of abs. weighted deviations = {res} 328.09132
+{txt}Iteration 36: sum of abs. weighted deviations = {res} 328.08998
+{txt}Iteration 37: sum of abs. weighted deviations = {res} 328.08991
+{txt}Iteration 38: sum of abs. weighted deviations = {res} 328.08335
+{txt}Iteration 39: sum of abs. weighted deviations = {res} 328.07469
+{txt}Iteration 40: sum of abs. weighted deviations = {res} 328.05402
+{txt}Iteration 41: sum of abs. weighted deviations = {res} 328.05389
+{txt}Iteration 42: sum of abs. weighted deviations = {res} 328.05287
+{txt}note:  alternate solutions exist
+Iteration 43: sum of abs. weighted deviations = {res} 328.05287
+{txt}Iteration 44: sum of abs. weighted deviations = {res} 328.05281
+{txt}Iteration 45: sum of abs. weighted deviations = {res} 328.05252
+{txt}Iteration 46: sum of abs. weighted deviations = {res} 328.04125
+{txt}Iteration 47: sum of abs. weighted deviations = {res} 328.04125
+{txt}Iteration 48: sum of abs. weighted deviations = {res} 328.04122
+{txt}Iteration 49: sum of abs. weighted deviations = {res} 328.04116
+{txt}Iteration 50: sum of abs. weighted deviations = {res} 328.04108
+{txt}Iteration 51: sum of abs. weighted deviations = {res} 328.04096
+{txt}Iteration 52: sum of abs. weighted deviations = {res} 328.04092
+{txt}Iteration 53: sum of abs. weighted deviations = {res} 328.04085
+
+{txt}Median regression{col 53}Number of obs = {res}     3,056
+{txt}  Raw sum of deviations{res} 330.5423{txt} (about {res}.03765687{txt})
+  Min sum of deviations{res} 328.0409{col 53}{txt}Pseudo R2     = {res}    0.0076
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  ROR_1mo{col 27}{c |}      Coef.{col 39}   Std. Err.{col 51}      t{col 59}   P>|t|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 20}Covid {c |}{col 27}{res}{space 2}-.0859339{col 39}{space 2}  .012789{col 50}{space 1}   -6.72{col 59}{space 3}0.000{col 67}{space 4}-.1110098{col 80}{space 3}-.0608581
+{txt}{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} .0002125{col 39}{space 2} .0001291{col 50}{space 1}    1.65{col 59}{space 3}0.100{col 67}{space 4}-.0000406{col 80}{space 3} .0004657
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2}-4.09e-06{col 39}{space 2} .0000841{col 50}{space 1}   -0.05{col 59}{space 3}0.961{col 67}{space 4}-.0001691{col 80}{space 3} .0001609
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2}  .000451{col 39}{space 2}  .000229{col 50}{space 1}    1.97{col 59}{space 3}0.049{col 67}{space 4} 2.08e-06{col 80}{space 3} .0008999
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}-.0001059{col 39}{space 2} .0004052{col 50}{space 1}   -0.26{col 59}{space 3}0.794{col 67}{space 4}-.0009003{col 80}{space 3} .0006885
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2}-.0038105{col 39}{space 2} .0113914{col 50}{space 1}   -0.33{col 59}{space 3}0.738{col 67}{space 4} -.026146{col 80}{space 3} .0185251
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} .0031585{col 39}{space 2} .0118211{col 50}{space 1}    0.27{col 59}{space 3}0.789{col 67}{space 4}-.0200197{col 80}{space 3} .0263368
+{txt}{space 23}CO {c |}{col 27}{res}{space 2} .0283256{col 39}{space 2} .0137746{col 50}{space 1}    2.06{col 59}{space 3}0.040{col 67}{space 4} .0013171{col 80}{space 3} .0553342
+{txt}{space 22}CEO {c |}{col 27}{res}{space 2}-.0068248{col 39}{space 2} .0122826{col 50}{space 1}   -0.56{col 59}{space 3}0.578{col 67}{space 4}-.0309078{col 80}{space 3} .0172582
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} .0424072{col 39}{space 2} .0127047{col 50}{space 1}    3.34{col 59}{space 3}0.001{col 67}{space 4} .0174966{col 80}{space 3} .0673178
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. eststo Quantile
+
+. esttab Quantile, order(_cons) star(* 0.10 ** 0.05 *** 0.01) staraux b(3) se(3) stats (N r2 r2_a rmse F rss, labels (N R-squar
+{err}) required
+{txt}{search r(100), local:r(100);}
+
+{com}. > ed AdjR-squared MSE F-ratio SSR)) mtitles ( "Quantile" )
+{bf}{err}>{sf} is not a valid command name
+{txt}{search r(199), local:r(199);}
+
+{com}. 
+. esttab Quantile, order(_cons) star(* 0.10 ** 0.05 *** 0.01) staraux b(3) se(3) stats (N r2 r2_a rmse F rss, labels (N R-squared AdjR-squared MSE F-ratio SSR)) mtitles ( "Quantile" )
+{res}
+{txt}{hline 28}
+{txt}                      (1)   
+{txt}                 Quantile   
+{txt}{hline 28}
+{txt}_cons       {res}        0.042   {txt}
+            {res} {ralign 12:{txt:(}0.013{txt:)}}***{txt}
+
+{txt}Covid       {res}       -0.086   {txt}
+            {res} {ralign 12:{txt:(}0.013{txt:)}}***{txt}
+
+{txt}priceToEar~o{res}        0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}*  {txt}
+
+{txt}enterprise~A{res}       -0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}   {txt}
+
+{txt}debtToEqui~o{res}        0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}** {txt}
+
+{txt}bookValueP~e{res}       -0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}   {txt}
+
+{txt}Own_10      {res}       -0.004   {txt}
+            {res} {ralign 12:{txt:(}0.011{txt:)}}   {txt}
+
+{txt}Exec        {res}        0.003   {txt}
+            {res} {ralign 12:{txt:(}0.012{txt:)}}   {txt}
+
+{txt}CO          {res}        0.028   {txt}
+            {res} {ralign 12:{txt:(}0.014{txt:)}}** {txt}
+
+{txt}CEO         {res}       -0.007   {txt}
+            {res} {ralign 12:{txt:(}0.012{txt:)}}   {txt}
+{txt}{hline 28}
+{txt}N           {res}     3056.000   {txt}
+{txt}R-squared   {res}                {txt}
+{txt}AdjR-squared{res}                {txt}
+{txt}MSE         {res}                {txt}
+{txt}F-ratio     {res}                {txt}
+{txt}SSR         {res}                {txt}
+{txt}{hline 28}
+{txt}Standard errors in parentheses
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}. esttab Quantile, order(_cons) star(* 0.10 ** 0.05 *** 0.01) staraux b(3) se(3) stats (N r2 r2_a rmse F rss, labels (N Psuedo R2)) mtitles ( "Quantile" )
+{res}
+{txt}{hline 28}
+{txt}                      (1)   
+{txt}                 Quantile   
+{txt}{hline 28}
+{txt}_cons       {res}        0.042   {txt}
+            {res} {ralign 12:{txt:(}0.013{txt:)}}***{txt}
+
+{txt}Covid       {res}       -0.086   {txt}
+            {res} {ralign 12:{txt:(}0.013{txt:)}}***{txt}
+
+{txt}priceToEar~o{res}        0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}*  {txt}
+
+{txt}enterprise~A{res}       -0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}   {txt}
+
+{txt}debtToEqui~o{res}        0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}** {txt}
+
+{txt}bookValueP~e{res}       -0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}   {txt}
+
+{txt}Own_10      {res}       -0.004   {txt}
+            {res} {ralign 12:{txt:(}0.011{txt:)}}   {txt}
+
+{txt}Exec        {res}        0.003   {txt}
+            {res} {ralign 12:{txt:(}0.012{txt:)}}   {txt}
+
+{txt}CO          {res}        0.028   {txt}
+            {res} {ralign 12:{txt:(}0.014{txt:)}}** {txt}
+
+{txt}CEO         {res}       -0.007   {txt}
+            {res} {ralign 12:{txt:(}0.012{txt:)}}   {txt}
+{txt}{hline 28}
+{txt}N           {res}     3056.000   {txt}
+{txt}Psuedo      {res}                {txt}
+{txt}R2          {res}                {txt}
+{txt}rmse        {res}                {txt}
+{txt}F           {res}                {txt}
+{txt}rss         {res}                {txt}
+{txt}{hline 28}
+{txt}Standard errors in parentheses
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}. esttab Quantile, order(_cons) star(* 0.10 ** 0.05 *** 0.01) staraux b(3) se(3) stats (N r2 r2_a rmse F rss, labels (N PsuedoR2)) mtitles ( "Quantile" )
+{res}
+{txt}{hline 28}
+{txt}                      (1)   
+{txt}                 Quantile   
+{txt}{hline 28}
+{txt}_cons       {res}        0.042   {txt}
+            {res} {ralign 12:{txt:(}0.013{txt:)}}***{txt}
+
+{txt}Covid       {res}       -0.086   {txt}
+            {res} {ralign 12:{txt:(}0.013{txt:)}}***{txt}
+
+{txt}priceToEar~o{res}        0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}*  {txt}
+
+{txt}enterprise~A{res}       -0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}   {txt}
+
+{txt}debtToEqui~o{res}        0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}** {txt}
+
+{txt}bookValueP~e{res}       -0.000   {txt}
+            {res} {ralign 12:{txt:(}0.000{txt:)}}   {txt}
+
+{txt}Own_10      {res}       -0.004   {txt}
+            {res} {ralign 12:{txt:(}0.011{txt:)}}   {txt}
+
+{txt}Exec        {res}        0.003   {txt}
+            {res} {ralign 12:{txt:(}0.012{txt:)}}   {txt}
+
+{txt}CO          {res}        0.028   {txt}
+            {res} {ralign 12:{txt:(}0.014{txt:)}}** {txt}
+
+{txt}CEO         {res}       -0.007   {txt}
+            {res} {ralign 12:{txt:(}0.012{txt:)}}   {txt}
+{txt}{hline 28}
+{txt}N           {res}     3056.000   {txt}
+{txt}PsuedoR2    {res}                {txt}
+{txt}r2_a        {res}                {txt}
+{txt}rmse        {res}                {txt}
+{txt}F           {res}                {txt}
+{txt}rss         {res}                {txt}
+{txt}{hline 28}
+{txt}Standard errors in parentheses
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare CEO CO Exec Own_10 Covid
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,056
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     57.16
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2063.1623{txt}{col 49}Pseudo R2{col 67}= {res}    0.0137
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                      Buy{col 27}{c |} Odds Ratio{col 39}   Std. Err.{col 51}      z{col 59}   P>|z|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} 1.001713{col 39}{space 2}  .001122{col 50}{space 1}    1.53{col 59}{space 3}0.127{col 67}{space 4}  .999516{col 80}{space 3} 1.003914
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2} .9992164{col 39}{space 2} .0006709{col 50}{space 1}   -1.17{col 59}{space 3}0.243{col 67}{space 4} .9979022{col 80}{space 3} 1.000532
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} 1.006843{col 39}{space 2}  .003357{col 50}{space 1}    2.05{col 59}{space 3}0.041{col 67}{space 4} 1.000285{col 80}{space 3} 1.013445
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}  1.00341{col 39}{space 2} .0035052{col 50}{space 1}    0.97{col 59}{space 3}0.330{col 67}{space 4} .9965632{col 80}{space 3} 1.010303
+{txt}{space 22}CEO {c |}{col 27}{res}{space 2} 1.119706{col 39}{space 2}  .106346{col 50}{space 1}    1.19{col 59}{space 3}0.234{col 67}{space 4} .9295221{col 80}{space 3} 1.348802
+{txt}{space 23}CO {c |}{col 27}{res}{space 2}  1.34622{col 39}{space 2} .1448809{col 50}{space 1}    2.76{col 59}{space 3}0.006{col 67}{space 4} 1.090208{col 80}{space 3} 1.662351
+{txt}{space 21}Exec {c |}{col 27}{res}{space 2} 1.125789{col 39}{space 2} .1028897{col 50}{space 1}    1.30{col 59}{space 3}0.195{col 67}{space 4} .9411587{col 80}{space 3} 1.346639
+{txt}{space 19}Own_10 {c |}{col 27}{res}{space 2} 1.128346{col 39}{space 2} .0995206{col 50}{space 1}    1.37{col 59}{space 3}0.171{col 67}{space 4} .9492175{col 80}{space 3} 1.341277
+{txt}{space 20}Covid {c |}{col 27}{res}{space 2} .5418443{col 39}{space 2} .0531783{col 50}{space 1}   -6.24{col 59}{space 3}0.000{col 67}{space 4} .4470281{col 80}{space 3} .6567713
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} 1.173507{col 39}{space 2} .1151832{col 50}{space 1}    1.63{col 59}{space 3}0.103{col 67}{space 4} .9681392{col 80}{space 3} 1.422439
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. 
+. 
+. eststo Log1
+
+. logistic Buy priceToEarningsRatio enterpriseValueOverEBITDA debtToEquityRatio bookValuePerShare Covid
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,056
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}     46.76
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2068.3606{txt}{col 49}Pseudo R2{col 67}= {res}    0.0112
+
+{txt}{hline 26}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                      Buy{col 27}{c |} Odds Ratio{col 39}   Std. Err.{col 51}      z{col 59}   P>|z|{col 67}     [95% Con{col 80}f. Interval]
+{hline 26}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}priceToEarningsRatio {c |}{col 27}{res}{space 2} 1.001574{col 39}{space 2}  .001113{col 50}{space 1}    1.42{col 59}{space 3}0.157{col 67}{space 4}  .999395{col 80}{space 3} 1.003758
+{txt}enterpriseValueOverEBITDA {c |}{col 27}{res}{space 2} .9992441{col 39}{space 2} .0006708{col 50}{space 1}   -1.13{col 59}{space 3}0.260{col 67}{space 4} .9979301{col 80}{space 3}  1.00056
+{txt}{space 8}debtToEquityRatio {c |}{col 27}{res}{space 2} 1.006684{col 39}{space 2} .0033124{col 50}{space 1}    2.02{col 59}{space 3}0.043{col 67}{space 4} 1.000213{col 80}{space 3} 1.013198
+{txt}{space 8}bookValuePerShare {c |}{col 27}{res}{space 2}  1.00375{col 39}{space 2}  .003524{col 50}{space 1}    1.07{col 59}{space 3}0.286{col 67}{space 4} .9968666{col 80}{space 3}  1.01068
+{txt}{space 20}Covid {c |}{col 27}{res}{space 2} .5458796{col 39}{space 2} .0531107{col 50}{space 1}   -6.22{col 59}{space 3}0.000{col 67}{space 4} .4511076{col 80}{space 3} .6605619
+{txt}{space 20}_cons {c |}{col 27}{res}{space 2} 1.410835{col 39}{space 2}  .060225{col 50}{space 1}    8.06{col 59}{space 3}0.000{col 67}{space 4}   1.2976{col 80}{space 3} 1.533953
+{txt}{hline 26}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. eststo Log2
+
+. logistic Buy CEO CO Exec Own_10 Covid
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,616
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}     44.96
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2454.0888{txt}{col 49}Pseudo R2{col 67}= {res}    0.0091
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         Buy{col 14}{c |} Odds Ratio{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}CEO {c |}{col 14}{res}{space 2} 1.026423{col 26}{space 2} .0877592{col 37}{space 1}    0.31{col 46}{space 3}0.760{col 54}{space 4}  .868058{col 67}{space 3}  1.21368
+{txt}{space 10}CO {c |}{col 14}{res}{space 2} 1.221136{col 26}{space 2} .1194477{col 37}{space 1}    2.04{col 46}{space 3}0.041{col 54}{space 4} 1.008096{col 67}{space 3} 1.479196
+{txt}{space 8}Exec {c |}{col 14}{res}{space 2} 1.099463{col 26}{space 2} .0905008{col 37}{space 1}    1.15{col 46}{space 3}0.249{col 54}{space 4} .9356533{col 67}{space 3} 1.291951
+{txt}{space 6}Own_10 {c |}{col 14}{res}{space 2}  1.05677{col 26}{space 2} .0838812{col 37}{space 1}    0.70{col 46}{space 3}0.487{col 54}{space 4} .9045157{col 67}{space 3} 1.234652
+{txt}{space 7}Covid {c |}{col 14}{res}{space 2} .5561952{col 26}{space 2} .0513457{col 37}{space 1}   -6.35{col 46}{space 3}0.000{col 54}{space 4} .4641386{col 67}{space 3} .6665103
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.269862{col 26}{space 2} .1115598{col 37}{space 1}    2.72{col 46}{space 3}0.007{col 54}{space 4} 1.068998{col 67}{space 3} 1.508469
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. eststo Log3
+
+. logistic Buy debtToEquityRatio CO Covid
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,089
+{txt}{col 49}LR chi2({res}3{txt}){col 67}= {res}     49.66
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2089.9399{txt}{col 49}Pseudo R2{col 67}= {res}    0.0117
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}              Buy{col 19}{c |} Odds Ratio{col 31}   Std. Err.{col 43}      z{col 51}   P>|z|{col 59}     [95% Con{col 72}f. Interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+debtToEquityRatio {c |}{col 19}{res}{space 2}  1.00669{col 31}{space 2} .0032683{col 42}{space 1}    2.05{col 51}{space 3}0.040{col 59}{space 4} 1.000305{col 72}{space 3} 1.013117
+{txt}{space 15}CO {c |}{col 19}{res}{space 2} 1.308566{col 31}{space 2} .1333165{col 42}{space 1}    2.64{col 51}{space 3}0.008{col 59}{space 4} 1.071705{col 72}{space 3} 1.597776
+{txt}{space 12}Covid {c |}{col 19}{res}{space 2} .5496739{col 31}{space 2}  .052933{col 42}{space 1}   -6.21{col 51}{space 3}0.000{col 59}{space 4} .4551299{col 72}{space 3} .6638574
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} 1.359093{col 31}{space 2} .0594643{col 42}{space 1}    7.01{col 51}{space 3}0.000{col 59}{space 4} 1.247403{col 72}{space 3} 1.480784
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. eststo Log4
+
+. esttab Log3 Log2 Log1 Log4, order(_cons) star(* 0.10 ** 0.05 *** 0.01) staraux b(3) se(3) stats (N r2 r2_a rmse F rss, labels (N R-squared AdjR-squared MSE F-ratio SSR)) mtitles ( "Log(Title)" "Log(Financial)" "Log(Full)" "Final Log")
+{res}
+{txt}{hline 76}
+{txt}                      (1)             (2)             (3)             (4)   
+{txt}               Log(Title)    Log(Financ~)       Log(Full)       Final Log   
+{txt}{hline 76}
+{res}Buy                                                                         {txt}
+{txt}_cons       {res}        0.239           0.344           0.160           0.307   {txt}
+            {res} {ralign 12:{txt:(}0.088{txt:)}}*** {ralign 12:{txt:(}0.043{txt:)}}*** {ralign 12:{txt:(}0.098{txt:)}}    {ralign 12:{txt:(}0.044{txt:)}}***{txt}
+
+{txt}CEO         {res}        0.026                           0.113                   {txt}
+            {res} {ralign 12:{txt:(}0.085{txt:)}}                    {ralign 12:{txt:(}0.095{txt:)}}                   {txt}
+
+{txt}CO          {res}        0.200                           0.297           0.269   {txt}
+            {res} {ralign 12:{txt:(}0.098{txt:)}}**                  {ralign 12:{txt:(}0.108{txt:)}}*** {ralign 12:{txt:(}0.102{txt:)}}***{txt}
+
+{txt}Exec        {res}        0.095                           0.118                   {txt}
+            {res} {ralign 12:{txt:(}0.082{txt:)}}                    {ralign 12:{txt:(}0.091{txt:)}}                   {txt}
+
+{txt}Own_10      {res}        0.055                           0.121                   {txt}
+            {res} {ralign 12:{txt:(}0.079{txt:)}}                    {ralign 12:{txt:(}0.088{txt:)}}                   {txt}
+
+{txt}Covid       {res}       -0.587          -0.605          -0.613          -0.598   {txt}
+            {res} {ralign 12:{txt:(}0.092{txt:)}}*** {ralign 12:{txt:(}0.097{txt:)}}*** {ralign 12:{txt:(}0.098{txt:)}}*** {ralign 12:{txt:(}0.096{txt:)}}***{txt}
+
+{txt}priceToEar~o{res}                        0.002           0.002                   {txt}
+            {res}                 {ralign 12:{txt:(}0.001{txt:)}}    {ralign 12:{txt:(}0.001{txt:)}}                   {txt}
+
+{txt}enterprise~A{res}                       -0.001          -0.001                   {txt}
+            {res}                 {ralign 12:{txt:(}0.001{txt:)}}    {ralign 12:{txt:(}0.001{txt:)}}                   {txt}
+
+{txt}debtToEqui~o{res}                        0.007           0.007           0.007   {txt}
+            {res}                 {ralign 12:{txt:(}0.003{txt:)}}**  {ralign 12:{txt:(}0.003{txt:)}}**  {ralign 12:{txt:(}0.003{txt:)}}** {txt}
+
+{txt}bookValueP~e{res}                        0.004           0.003                   {txt}
+            {res}                 {ralign 12:{txt:(}0.004{txt:)}}    {ralign 12:{txt:(}0.003{txt:)}}                   {txt}
+{txt}{hline 76}
+{txt}N           {res}     3616.000        3056.000        3056.000        3089.000   {txt}
+{txt}R-squared   {res}                                                                {txt}
+{txt}AdjR-squared{res}                                                                {txt}
+{txt}MSE         {res}                                                                {txt}
+{txt}F-ratio     {res}                                                                {txt}
+{txt}SSR         {res}                                                                {txt}
+{txt}{hline 76}
+{txt}Standard errors in parentheses
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/patrickmcguigan/Desktop/Financial Data/Distribution.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}12 May 2021, 04:14:12
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
